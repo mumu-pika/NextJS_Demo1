@@ -1,0 +1,52 @@
+import { Link } from 'next/link'
+import { Image } from 'next/image'
+
+function EventItem(props) {
+  // 解构赋值
+  const { id, title, description, location, date, image } = props
+
+  // 这里解构出来的date格式为：2020-05-21, 这是我们可读的格式
+  // 这里我们将date传给Date()这个日期构造函数,将其转为js对象
+  // toLocalDateString() 能够返回日期对象部分的字符串， 传入参数为locaLe语言环境以及配置项options
+  // dateObj.toLocaleDateString([locales [, options]])
+  // 在locale为'en-US'下, 输出格式如：12/19/2012
+  const newDate = new Date(date).toLocaleDateString('en-US', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric'
+  })
+
+  // 这里将location中的 “，” 替换为换行符
+  // 之后需要添加效果使得这里的换行符达到换行的效果
+  const formattedAddress = location.replace(',', '\n')
+
+  // 动态注入id给到url
+  const exploreLink = `/events/${id}`
+
+
+  return (
+    <li>
+      {/* <Image src={'/' + image} alt={title} /> */}
+      <div>
+        <div>
+          <h2>{title}</h2>
+          <div>
+            <time>{newDate}</time>
+          </div>
+          <div>
+            <description>{description}</description>
+          </div>
+          <div>
+            <address>{formattedAddress}</address>
+          </div>
+        </div>
+        <div>
+          {/* 设置跳转其他页面 */}
+          <Link href={exploreLink}>Explore Event</Link>
+        </div>
+      </div>
+    </li>
+  )
+}
+
+export default EventItem

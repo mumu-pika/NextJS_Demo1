@@ -2,7 +2,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
+// 引入本地模拟的数据
+import { getFeaturedEvents } from '../dummy-data'
+
+// 引入组件
+import EventList from '../components/events/event-list'
+
 export default function Home() {
+  const featuredEvents = getFeaturedEvents()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -15,6 +23,9 @@ export default function Home() {
         <h1 className={styles.title}>
           The Home Page
         </h1>
+        {/* <div>
+          <EventList items={featuredEvents}/>
+        </div> */}
       </main>
 
       <footer className={styles.footer}>
