@@ -23,10 +23,7 @@ function EventItem(props) {
   // 动态注入id给到url
   const exploreLink = `/events/${id}`
 
-
   return (
-    <li>
-      {/* <Image src={'/' + image} alt={title} /> */}
       <div>
         <div>
           <h2>{title}</h2>
@@ -42,10 +39,12 @@ function EventItem(props) {
         </div>
         <div>
           {/* 设置跳转其他页面 */}
-          <Link href={exploreLink}>Explore Event</Link>
+          {/* <Link href={exploreLink}>Explore Event</Link> */}
         </div>
       </div>
-    </li>
+
+
+
   )
 }
 
