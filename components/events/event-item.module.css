@@ -1,0 +1,44 @@
+.item {
+  display: flex;
+  /* flex-direction: column; */
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 1px 12px 2px rgba(0, 0, 0, 0.2);
+  margin: 1rem;
+  border-radius: 8px;
+  background-color: ;
+  /* gap 是容器中元素之间的间距 */
+  gap: 1rem;
+  overflow: hidden;
+}
+
+.title {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-style: italic;
+  color: gray;
+  gap: 1rem;
+}
+
+.date, .address, .description {
+ display: flex;
+ gap: 0.8rem;
+}
+
+.actions {
+  color:deeppink;
+  /* flex元素中置底靠右 */
+  margin-top: 1rem;
+  margin-left:auto;
+}
+
+.icon {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+

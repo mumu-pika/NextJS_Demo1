@@ -10,13 +10,22 @@ const DUMMY_EVENTS = [
   },
   {
     id: 'e2',
-    title: 'Go ahead! Take a world trip! ',
+    title: 'Take a world trip! ',
     description: 'Let\'s have a different way to see the world',
     location: 'London, NewStreet 9025',
     date: '2021-11-11',
     image: 'images/tour.jpg',
     isFeatured: true
-  }
+  },
+  {
+    id: 'e3',
+    title: 'What a super cool guy !',
+    description: 'The latest king of Caoxi',
+    location: 'North Caoxi Road, Shanghai, 200030, China',
+    date: '2022-02-30',
+    image: 'images/king.jpg',
+    isFeatured: true
+  },
 ]
 
 // 返回特定的事件

@@ -1,5 +1,14 @@
-import { Link } from 'next/link'
-import { Image } from 'next/image'
+import Image from 'next/image'
+import Button from '../ui/button'
+
+// 引入css模块样式
+import styles from './event-item.module.css'
+
+// 引入图标组件
+import AddressIcon from '../icons/address-icon'
+import DateIcon from '../icons/date-icon'
+import DocumentIcon from '../icons/document-icon'
+import ArrowRightIcon from '../icons/arrow-right-icon'
 
 function EventItem(props) {
   // 解构赋值
@@ -24,27 +33,36 @@ function EventItem(props) {
   const exploreLink = `/events/${id}`
 
   return (
-      <div>
-        <div>
-          <h2>{title}</h2>
-          <div>
+    <li className={styles.item}>
+      <Image src={'/' + image} alt={title} width={400} height={280}></Image>
+      <div className={styles.contentWrapper}>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.content}>
+          <div className={styles.date}>
+            <DateIcon />
             <time>{newDate}</time>
           </div>
-          <div>
-            <description>{description}</description>
+          <div className={styles.description}>
+            <DocumentIcon/>
+            <span>{description}</span>
           </div>
-          <div>
+          <div className={styles.address}>
+            <AddressIcon />
             <address>{formattedAddress}</address>
           </div>
-        </div>
-        <div>
-          {/* 设置跳转其他页面 */}
-          {/* <Link href={exploreLink}>Explore Event</Link> */}
+          <div className={styles.actions}>
+            <Button link={exploreLink}>
+              <span>
+                Explore Event
+              </span>
+              <span className={styles.icon}>
+                <ArrowRightIcon />
+              </span>
+            </Button>
+          </div>
         </div>
       </div>
-
-
-
+    </li>
   )
 }
 

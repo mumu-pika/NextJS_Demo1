@@ -15,6 +15,17 @@ a {
   box-sizing: border-box;
 }
 
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.center {
+  margin: auto;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
@@ -22,5 +33,12 @@ a {
   body {
     color: white;
     background: black;
+  }
+}
+
+
+@media (hover: hover) {
+  a:hover {
+    color: hsla(275, 83%, 60%, 0.8);
   }
 }

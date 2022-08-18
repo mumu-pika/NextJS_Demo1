@@ -23,9 +23,7 @@ export default function Home() {
         <h1 className={styles.title}>
           The Home Page
         </h1>
-        <div>
           <EventList items={featuredEvents}/>
-        </div>
       </main>
 
       <footer className={styles.footer}>
