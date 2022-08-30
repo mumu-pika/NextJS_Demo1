@@ -1,7 +1,7 @@
 const DUMMY_EVENTS = [
   {
     id: 'e1',
-    title: 'Programming will make our life better!',
+    title: 'Program changes our life!',
     description: 'Everyone can learn to code!',
     location: 'Shanghai, Bund 18',
     date: '2020-05-21',

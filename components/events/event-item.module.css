@@ -15,12 +15,15 @@
   margin-bottom: 2rem;
 }
 
+/* .content包含下面的样式 */
 .content{
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-style: italic;
   color: gray;
+  min-width: 330px;
+  /* gap是用来间隔flexbox里面的子元素 */
   gap: 1rem;
 }
 
@@ -29,11 +32,13 @@
  gap: 0.8rem;
 }
 
+
+/* 按钮图标 */
 .actions {
   color:deeppink;
   /* flex元素中置底靠右 */
   margin-top: 1rem;
-  margin-left:auto;
+  margin-left: auto;
 }
 
 .icon {

@@ -2,6 +2,7 @@ import EventItem from "./event-item"
 
 import styles from './event-list.module.css'
 
+// 事件列表组件
 function EventList(props) {
   const { items } = props
   return (
