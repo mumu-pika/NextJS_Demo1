@@ -22,7 +22,7 @@ const DUMMY_EVENTS = [
     title: 'What a super cool guy !',
     description: 'The latest king of Caoxi',
     location: 'North Caoxi Road, Shanghai, 200030, China',
-    date: '2022-02-30',
+    date: '2022-02-28',
     image: 'images/king.jpg',
     isFeatured: true
   },
@@ -40,7 +40,7 @@ export function getAllEvents() {
 
 // 根据筛选条件返回时间合适的事件
 export function getFilteredEvents(dateFilter) {
-  const { year, month } = dataFilter
+  const { year, month } = dateFilter
   let filteredEvents = DUMMY_EVENTS.filter((event) => {
     const eventDate = new Date(event.date)
     return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1

@@ -1,0 +1,17 @@
+.form{
+  width: 40rem;
+  height: 2rem;
+  margin: 2rem 0;
+}
+
+.controlWrapper {
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.control label {
+  margin: 0 1rem;
+}

@@ -1,5 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
+
+// 引入nodejs中的fs，注意这里是在getStaticProps中使用fs,nextJS会自动区分开，单独分包
+import fs from 'fs/promises'
+import path from 'path'
+
+import {useRouter} from 'next/router'
+
+// 引入样式
 import styles from '../styles/Home.module.css'
 
 // 引入本地模拟的数据
@@ -9,9 +17,55 @@ import { getAllEvents, getFeaturedEvents } from '../dummy-data'
 import EventList from '../components/events/event-list'
 import EventSearch from '../components/events/event-search'
 
-export default function Home() {
+
+// prepares the props for components
+// nextJS will first execute getStaticProps before executing the component function
+export async function getStaticProps(context) {
+  // 借助于nodejs中的path来帮我们拼接路径
+  // process.cwd() cwd(current working directory), 这里是指整个nextjs项目文件夹，而不是page文件夹
+  const filepath = path.join(process.cwd(), "data", "dummy-backend.json")
+  const jsonData =  await fs.readFile(filepath)
+  const data = JSON.parse(jsonData)
+
+  // 校验数据，如果数据没有，需要借助于redirect做重定向
+  if(!data) {
+    return {
+      redirect: {
+        // 这里重定向到相应的目录去处理
+        destination: '/no-data'
+      }
+    }
+  }
+
+  // 校验数据， 借助于notFound这个key, 返回404页面
+  if (data.products.length === 0) return { notFound: true}
+  return {
+    props: {
+      products: data.products
+    },
+    // 重新验证，需要给nextJS一个确切的时间去做重新预渲染
+    // 为的是能应对需要高度更新的场景，在部署之后仍然会做更新
+    revalidate: 10,
+    // notFound: true // 如果notFound为true会返回404.html
+  }
+}
+
+export default function Home(props) {
+  // products for static generation
+  const {products} = props
+
   // const featuredEvents = getFeaturedEvents()
   const allEvents = getAllEvents()
+
+  // 使用路由
+  const router = useRouter()
+
+  // 定义一个寻找event的回调
+  function findEventsHandler(year, month) {
+    // 根据选定年月来给出对应的路径
+    const fullPath = `/events/${year}/${month}`
+     router.push(fullPath)
+  }
 
   return (
     <div className={styles.container}>
@@ -26,8 +80,14 @@ export default function Home() {
           The Home Page
         </h1>
           {/* <EventList items={featuredEvents}/> */}
-          <EventSearch/>
+          <EventSearch onSearch={findEventsHandler}/>
           <EventList items={allEvents}/>
+          {/* products for static generation */}
+          <ul>
+            {products.map(product => (
+              <li key={product.id}>{product.title}</li>
+            ))}
+          </ul>
       </main>
 
       <footer className={styles.footer}>
