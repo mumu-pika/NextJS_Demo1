@@ -6,6 +6,7 @@ import fs from 'fs/promises'
 import path from 'path'
 
 import {useRouter} from 'next/router'
+import Link from 'next/link'
 
 // 引入样式
 import styles from '../styles/Home.module.css'
@@ -85,7 +86,12 @@ export default function Home(props) {
           {/* products for static generation */}
           <ul>
             {products.map(product => (
-              <li key={product.id}>{product.title}</li>
+              <li key={product.id}>
+                <Link href={`/products/${product.id}`}>
+                  {product.title}
+                </Link>
+
+              </li>
             ))}
           </ul>
       </main>
