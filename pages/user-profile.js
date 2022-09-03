@@ -22,7 +22,9 @@ export async function getServerSideProps(context) {
   // 我们可以从context获得一些参数，不同于getStaticProps,
   // 这里我们还能从context获取到请求req和响应res
   const { params, req, res } = context
+  console.log("Server side code")
 
+  
   return {
     props: {
       username: 'pika'
