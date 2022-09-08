@@ -8,7 +8,7 @@
 // 但我们不能预渲染这个页面，因为我们不知道哪些用户会提前，而且我们无法提前访问他们的cookie
 // 因此，我们需要导出一个异步函数 getServerSideProps
 // 此外另一个使用getServerSideProps的情况是：
-//     例如有 高度动态的数据，每秒变化多次, 任何旧页面都会是过时的
+//     例如：有高度动态的数据，每秒变化多次, 任何旧页面都会是过时的
 
 function UserProfilePage(props) {
   return (
