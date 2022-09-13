@@ -3,9 +3,19 @@ import { getFilteredEvents } from '../../helpers/api-util'
 import EventList from '../../components/events/event-list'
 import { Fragment } from 'react'
 
+import Head from 'next/head'
+
 // 显示过滤事件的列表
 // 我们需要从router中提取关键信息，比如：年份和月份
 function FilteredEventsPage(props) {
+  // 设置头部信息
+  // const pageHeadData = (
+  //   <Head>
+  //     <title>FilteredEvents</title>
+  //     <meta name="description" content={`All events for ${numMonth} / ${numYear}`} />
+  //   </Head>
+  // )
+
   // const router = useRouter()
   // const filterData = router.query.slug
 
@@ -48,6 +58,7 @@ function FilteredEventsPage(props) {
 
   return (
     <Fragment>
+      {/* {pageHeadData} */}
       <EventList items={filteredEvents} />
     </Fragment>
   )
@@ -62,7 +73,7 @@ export async function getServerSideProps(context) {
   const filterData = params.slug
 
   if (!filterData) {
-    return {props: {loading: true}}
+    return { props: { loading: true } }
   }
   console.log(filterData)
 
@@ -77,7 +88,7 @@ export async function getServerSideProps(context) {
   // check 数字是否合规
   if (isNaN(numYear) || isNaN(numMonth) || numYear > 2030 || numYear < 2000 || numMonth < 1 || numMonth > 12) {
     return {
-      props: {hasError: true}
+      props: { hasError: true }
       // notFound: true,
       // 404之后，我们可以重定向过去
       // redirect: {

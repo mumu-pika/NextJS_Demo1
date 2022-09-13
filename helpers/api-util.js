@@ -21,7 +21,7 @@ export async function getAllEvents() {
   return events
 }
 
-// 过滤出特定 的事件
+// 过滤出特定的事件
 export async function getFeaturedEvents() {
   const allEvents = await getAllEvents()
   return allEvents.filter((events)=> events.isFeatured)
