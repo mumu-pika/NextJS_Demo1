@@ -130,7 +130,6 @@ export default function Home(props) {
 
 export async function getStaticProps() {
   const allEvents = await getAllEvents()
-  console.log(allEvents)
   return {
     // 这里我们使用firebase中的预处理好的数据，而不是本地的数据
     // 参考firebase文档：https://firebase.google.com/docs/database/rest/start
