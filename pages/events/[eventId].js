@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { getAllEvents, getEventById } from '../../helpers/api-util'
 
 import EventItem from '../../components/events/event-item'
-
+import Comments from '../../components/input/comments'
 
 function EventDetailPage(props) {
   // const router = useRouter()
@@ -28,6 +28,8 @@ function EventDetailPage(props) {
         date={event.date}
         image={event.image}
       />
+      <Comments eventId={event.id} />
+
     </div>
   )
 }
