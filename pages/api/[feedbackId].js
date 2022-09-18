@@ -1,7 +1,7 @@
 /* 
   dynamic API Routes
   We need to know which concrete value was encoded in the URL as a value for this placeholder
-  dynamic API Routes can not just handle get request 
+  dynamic API Routes can not just handle get request
 */
 
 import { buildFeedbackPath, extraFeedback} from './feedback'

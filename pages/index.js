@@ -21,6 +21,7 @@ import { getAllEvents, getFeaturedEvents } from '../helpers/api-util'
 import EventList from '../components/events/event-list'
 import EventSearch from '../components/events/event-search'
 import { features } from 'process'
+import NewsletterRegistration from '../components/input/newsletter-registration';
 
 
 // // prepares the props for components
@@ -83,9 +84,10 @@ export default function Home(props) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
+        {/* <h1 className={styles.title}>
           The Home Page
-        </h1>
+        </h1> */}
+        <NewsletterRegistration />
           {/* <EventList items={featuredEvents}/> */}
           <EventSearch onSearch={findEventsHandler}/>
           <EventList items={allEvents}/>
