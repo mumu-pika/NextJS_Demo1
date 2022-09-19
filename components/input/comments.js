@@ -11,6 +11,7 @@ function Comments(props) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
+    // 如果有评论，去获取评论
     if (showComments) {
       fetch('/api/comments/' + eventId)
         .then((response) => response.json())
