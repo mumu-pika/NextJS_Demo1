@@ -1,3 +1,5 @@
+// new comment 组件， 也就是评论区那个表单
+
 import { useRef, useState } from 'react';
 import classes from './new-comment.module.css';
 
@@ -27,7 +29,7 @@ function NewComment(props) {
       enteredComment.trim() === ''
     ) {
       setIsInvalid(true);
-      return;
+      return
     }
 
     props.onAddComment({
